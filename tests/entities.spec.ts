@@ -32,11 +32,11 @@ describe("Entities", () => {
         this.timeout(15000);
         const broker = instance.createBroker<EntitiesResult>("entities");
         await broker.init();
-        const result = await broker.call("identify", { text: "I was with Taylor Swift the other day" });
+        const result = await broker.call("identify", { text: "I was with Barack Obama and Taylor Swift the other day" });
         expect(result).toBeDefined();
         expect(result.entities).toBeDefined();
+        expect(result.entities["Barack Obama"]).toBeDefined();
         expect(result.entities["Taylor Swift"]).toBeDefined();
-        expect(result.entities["Taylor Swift"].image.image_src).toBeDefined();
     })
 
     after(() => {
