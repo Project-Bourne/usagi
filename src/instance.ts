@@ -1,12 +1,12 @@
 import { Broker } from "./broker";
 
 export class Instance {
-    private brokers: Broker<any>[] = [];
+    private brokers: Broker[] = [];
 
     constructor(private connectionString: string) {}
 
-    createBroker<T>(module: string): Broker<T> {
-        const broker = new Broker<T>(this.connectionString, module);
+    createBroker<T>(module: string): Broker {
+        const broker = new Broker(this.connectionString, module);
         this.brokers.push(broker);
         return broker
     }

@@ -6,7 +6,7 @@ type BrokerJobHandler<T> = (result: T) => void;
 
 const jobs: { [key: string]: BrokerJobHandler<any> } = {};
 
-export class Broker<T> {
+export class Broker {
     private connection?: amqp.Connection;
     private channel?: amqp.Channel;
 
@@ -38,7 +38,7 @@ export class Broker<T> {
         await this.connection?.close();
     }
 
-    async call(job: string, data: any): Promise<T> {
+    async call<T>(job: string, data: any): Promise<T> {
         const thisReplyQueueName = this.replyQueue
         const jobDesc = {
             ...data,

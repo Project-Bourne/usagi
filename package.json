@@ -4,7 +4,8 @@
   "description": "The rabbitmq communication broker for all backend modules",
   "main": "src/index.ts",
   "scripts": {
-    "test": "ts-mocha --type-check tests/*.spec.ts"
+    "test": "ts-mocha --type-check tests/*.spec.ts",
+    "install": "tsc"
   },
   "keywords": [],
   "author": "",

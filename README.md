@@ -16,9 +16,9 @@ type EntitiesResult = {
 
 let instance = new Instance("amqp://guest:guest@localhost:5672/");
 
-const broker = instance.createBroker<EntitiesResult>("entities");
+const broker = instance.createBroker("entities");
 await broker.init();
-const result = await broker.call("identify", { text: "I was with Barack Obama and Taylor Swift the other day" });
+const result = await broker.call<EntitiesResult>("identify", { text: "I was with Barack Obama and Taylor Swift the other day" });
 expect(result).toBeDefined(); // should be true
 expect(result.entities).toBeDefined(); // should be true
 expect(result.entities["Barack Obama"]).toBeDefined(); // should be true
