@@ -28,6 +28,7 @@ export class Broker {
     async init() {
         this.connection = await amqp.connect(this.connectionString);
         this.channel = await this.connection.createChannel();
+        this.channel.assertQueue(this.replyQueue);
         await this.channel.consume(this.replyQueue, (msg) => {
             this.handleJob(msg)
         });
