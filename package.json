@@ -5,7 +5,7 @@
   "main": "src/index.ts",
   "scripts": {
     "test": "ts-mocha --type-check tests/*.spec.ts",
-    "postinstall": "tsc"
+    "postinstall": "echo building usagi... && tsc"
   },
   "keywords": [],
   "author": "",
