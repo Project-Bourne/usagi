@@ -47,7 +47,7 @@ export class Broker {
             _id: uuidV4(),
         };
 
-        const r = await this.channel?.assertQueue(thisReplyQueueName, {durable: true});
+        const r = await this.channel?.assertQueue(thisReplyQueueName, {durable: false});
 
         return await new Promise<T>((resolve, reject) => {
             jobs[jobDesc._id] = (data: T) => {
