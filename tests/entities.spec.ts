@@ -21,7 +21,6 @@ describe("Entities", () => {
     });
 
     it("can call broker", async function() {
-        this.timeout(15000);
         const broker = instance.createBroker<EntitiesResult>("entities");
         await broker.init();
         const result = await broker.call("identify", { text: "I was with Taylor Swift the other day" });
@@ -29,7 +28,6 @@ describe("Entities", () => {
     });
 
     it("returns entities", async function () {
-        this.timeout(15000);
         const broker = instance.createBroker("entities");
         await broker.init();
         const result = await broker.call<EntitiesResult>("identify", { text: "I was with Barack Obama and Taylor Swift the other day" });
